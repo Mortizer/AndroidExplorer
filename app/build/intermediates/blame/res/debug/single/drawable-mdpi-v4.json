@@ -1,0 +1,10 @@
+[
+    {
+        "merged": "/Users/Mortizer/AndroidStudioProjects/AndroidExplorer/app/build/intermediates/res/merged/debug/drawable-mdpi-v4/no_image.png",
+        "source": "/Users/Mortizer/AndroidStudioProjects/AndroidExplorer/app/src/main/res/drawable-mdpi/no_image.png"
+    },
+    {
+        "merged": "/Users/Mortizer/AndroidStudioProjects/AndroidExplorer/app/build/intermediates/res/merged/debug/drawable-mdpi-v4/ic_launcher.png",
+        "source": "/Users/Mortizer/AndroidStudioProjects/AndroidExplorer/app/src/main/res/drawable-mdpi/ic_launcher.png"
+    }
+]

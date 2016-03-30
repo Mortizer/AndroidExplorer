@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_height="@dimen/maxDimen"
+    android:layout_width="match_parent"
+    android:padding="@dimen/paddingView">
+
+        <ImageView
+            android:background="@color/transbackground"
+            android:id="@+id/imagerowlist"
+            android:layout_width="@dimen/maxDimen"
+            android:layout_height="@dimen/maxDimen"
+            android:src="@drawable/no_image"
+            android:padding="@dimen/padImgCustom"
+            android:scaleType="matrix"/>
+
+        <TextView
+            android:id="@+id/textrowlist"
+            android:layout_width="wrap_content"
+            android:layout_height="@dimen/maxDimen"
+            android:layout_marginLeft="@dimen/leftpadcustomlist"
+            android:layout_toRightOf="@+id/imagerowlist"
+            android:layout_alignBaseline="@+id/imagerowlist"
+            android:gravity="center_vertical" />
+</RelativeLayout>

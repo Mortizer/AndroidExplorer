@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="paddingView">5dp</dimen>
+    <dimen name="leftpadcustomlist">20dp</dimen>
+    <dimen name="heightCustomList">50sp</dimen>
+    <dimen name="maxDimen">40dp</dimen>
+    <dimen name="topList">10dp</dimen>
+    <dimen name="padImgCustom">3dp</dimen>
+</resources>

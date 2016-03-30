@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">Android Explorer</string>
+    <string name="hello_world">Hello world!</string>
+    <string name="menu_settings">Settings</string>
+    <string name="icon_asset_dir">iconos</string>
+    <string name="icon_directory">carpeta_icon.png</string>
+    <string name="icon_file">file_icon.png</string>
+    <string name="parent_name">../</string>
+    <string name="cabeceraText">Location: </string>
+
+
+</resources>
