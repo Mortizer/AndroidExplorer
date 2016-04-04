@@ -10,7 +10,8 @@ import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
-
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.InputStream;
 import java.util.List;
@@ -56,6 +57,7 @@ public class FileAdapter extends ArrayAdapter<DirectoryList> {
 
         holder.textDir.setText(pathlist.get(position).getNameDir());
 
+
         //------- TRATAMIENTO PARA LA IMAGEN ---------
 
         Integer maxDimension = (int)context.getResources().getDimension(R.dimen.heightCustomList);
@@ -92,6 +94,7 @@ public class FileAdapter extends ArrayAdapter<DirectoryList> {
 
         return row;
     }
+
 
     private boolean EsImagen (String path, String[] ext){
 
@@ -134,45 +137,39 @@ public class FileAdapter extends ArrayAdapter<DirectoryList> {
         return scaleImg;
     }
 
+
+
     //Escalado de una imagen con origen un path.
     public Bitmap ScaleBitmapImg(String pathimg, int maxDimension){
 
-        final BitmapFactory.Options options = new BitmapFactory.Options();
-        BitmapFactory.decodeFile(pathimg, options);
+        //Log.i("IMAGEN-I",pathimg);
+
+        Bitmap scaleImg;
+        BitmapFactory.Options options = new BitmapFactory.Options();
+        InputStream in;
 
         options.inJustDecodeBounds = true;
 
-        options.inSampleSize = calculateInSampleSize(options,maxDimension,maxDimension);
+        try {
+            in = new FileInputStream(pathimg);
+            scaleImg = BitmapFactory.decodeStream(in);
+
+            if ((maxDimension > options.outHeight) || (maxDimension >options.outWidth)){
+                options.inSampleSize = Math.round(Math.max((float) options.outHeight / (float)maxDimension,
+                        (float) options.outWidth / (float)maxDimension));
+            }
+
+        }
+        catch (FileNotFoundException e1){
+            e1.printStackTrace();
+            scaleImg = null;
+        }
 
         options.inJustDecodeBounds = false;
 
-        return BitmapFactory.decodeFile(pathimg, options);
+        return scaleImg;
+
     }
-
-
-    public static int calculateInSampleSize(
-            BitmapFactory.Options options, int reqWidth, int reqHeight) {
-        // Raw height and width of image
-        final int height = options.outHeight;
-        final int width = options.outWidth;
-        int inSampleSize = 1;
-
-        if (height > reqHeight || width > reqWidth) {
-
-            final int halfHeight = height / 2;
-            final int halfWidth = width / 2;
-
-            // Calculate the largest inSampleSize value that is a power of 2 and keeps both
-            // height and width larger than the requested height and width.
-            while ((halfHeight / inSampleSize) > reqHeight
-                    && (halfWidth / inSampleSize) > reqWidth) {
-                inSampleSize *= 2;
-            }
-        }
-
-        return inSampleSize;
-    }
-
 
     static class FileHolder{
 
@@ -181,3 +178,5 @@ public class FileAdapter extends ArrayAdapter<DirectoryList> {
 
     }
 }
+
+
